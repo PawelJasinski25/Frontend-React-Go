@@ -32,7 +32,8 @@ const Cart = () => {
     const calculateTotalPrice = () => {
         return groupedCart.reduce((total, item) => {
             const product = products.find(p => p.id === item.product_id);
-            return total + (product?.price || 0) * item.quantity;
+            return total + (product?.price ?? 0) * item.quantity;
+
         }, 0);
     };
 
@@ -44,7 +45,7 @@ const Cart = () => {
                     <ul>
                         {groupedCart.map((item) => {
                             const product = products.find(p => p.id === item.product_id);
-                            const totalPrice = (product?.price || 0) * item.quantity;
+                            const totalPrice = (product?.price ?? 0) * item.quantity;
 
                             return (
                                 <li key={item.product_id}>

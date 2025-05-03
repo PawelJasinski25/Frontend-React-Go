@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import {createContext, useContext, useState, useEffect, useMemo} from "react";
 import axios from "axios";
 
 interface CartItem {
@@ -42,8 +42,14 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         }
     };
 
+    const value = useMemo(() => ({
+        cart,
+        addToCart,
+        fetchCart
+    }), [cart]);
+
     return (
-        <CartContext.Provider value={{ cart, addToCart, fetchCart }}>
+        <CartContext.Provider value={value}>
             {children}
         </CartContext.Provider>
     );

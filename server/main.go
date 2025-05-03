@@ -18,5 +18,8 @@ func main() {
 	routes.RegisterCartRoutes(e)
 	routes.RegisterPaymentRoutes(e)
 
-	e.Start(":8080")
+	err := e.Start(":8080")
+	if err != nil {
+		return
+	}
 }

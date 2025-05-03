@@ -1,5 +1,7 @@
 FROM golang:1.24-alpine
 
+RUN adduser -D appuser
+USER appuser
 
 WORKDIR /app
 COPY . .
